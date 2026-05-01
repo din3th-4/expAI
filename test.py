@@ -5,6 +5,7 @@ import cv2
 cap = cv2.VideoCapture(0)
 
 frame_count = 0 
+frame_rate = 35
 
 last_emotion = "analysing..."
 
@@ -18,7 +19,7 @@ while True:
     frame = cv2.resize(frame, (0,0), fx=0.3, fy=0.3)
     frame = cv2.flip(frame, 1) 
 
-    if frame_count % 20 == 0:
+    if frame_count % frame_rate == 0:
         try:
             result = DeepFace.analyze(frame, actions= ['emotion'], enforce_detection= False) 
             last_emotion = result[0]['dominant_emotion']
