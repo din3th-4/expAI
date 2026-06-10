@@ -1,8 +1,6 @@
-## AI Emotion Recognition Study
-
-The objective of this project is to evaluate and compare the performance of two facial emotion recognition models, FER and DeepFace, against human perception in identifying emotional expressions.
-
-To conduct this study, 30 participants will be asked to display each of the seven basic emotions recognized by both models:
+# AI Emotion Recognition Study
+The goal of this project is to test and compare how well two facial emotion recognition systems, FER and DeepFace, can identify human emotions compared to how real people perceive them.
+To do this, 30 participants will be photographed while expressing each of the seven basic emotions that both systems are designed to detect:
 
 * Anger
 * Disgust
@@ -12,4 +10,4 @@ To conduct this study, 30 participants will be asked to display each of the seve
 * Surprise
 * Neutral
 
-Facial images of the participants expressing these emotions will be collected and organized into a labeled dataset. The dataset will then be used to assess the accuracy of FER and DeepFace in classifying emotional expressions. The models' predictions will be compared with the intended emotion labels and with evaluations provided by human observers, showing a comprehensive analysis of the similarities and differences between AI-based emotion recognition and human perception.
+The collected photos will be expanded into a larger dataset by creating modified versions of each image, such as greyscale, blurred, and low-light variants. This dataset will then be used to test how accurately FER and DeepFace can identify the emotions shown. Their results will be compared both to the correct emotion labels and to the judgments of human observers, giving a fuller picture of where AI emotion recognition agrees with — and differs from — human perception.
