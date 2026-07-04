@@ -171,9 +171,8 @@ class Ratings:
 
         timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
-        row = [img_id, version, ambiguous, self.rater_id, self.directory
-               + values + [time_taken, timestamp]
-            ]
+        row = [img_id, version, ambiguous, self.rater_id, self.directory] + values + [time_taken, timestamp] 
+        
         
         with open(self.csv_path, "a", newline="") as f:
             writer = csv.writer(f)
