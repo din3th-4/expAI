@@ -19,10 +19,10 @@ import tkinter as tk
 from tkinter import simpledialog, filedialog, messagebox
 from PIL import Image, ImageTk
 
-emos = ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral", "dom_emotion"]
+emos = ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"]
 valid_ext = (".jpg", ".jpeg", ".png", ".bmp", ".webp")
 
-csv_fields = ( ["img_id","version", "ambiguous", "r_id", "directory"] + emos + ["response_time_s", "timestamp"])
+csv_fields = ( ["img_id","version", "ambiguous", "r_id", "directory"] + emos + ["dominant_emotion", "response_time_s", "timestamp"])
 
 output_dir = "participant_ratings"
 
@@ -34,7 +34,7 @@ def parse_filenames(filename):
 
     returns: (img_id, version, ambiguous(true/false))
     img_id -> 'number_emotion' ex: 1_happy
-    version -> single letter version ex: o, b, g, r
+    version -> single letter version ex: o, b, g, l
     """
 
     n = os.path.splitext(filename)[0]
@@ -63,7 +63,7 @@ def get_already_rated(csv_path, directory):
         reader = csv.DictReader(f)
         for row  in reader:
             if row["directory"] == directory:
-                rated.add(row["img_id"])
+                rated.add((row["img_id"], row["version"]))
     
     return rated 
 
@@ -147,7 +147,7 @@ class Ratings:
         self.img_label.config(image=self.tk_img)
 
         self.prog_label.config(
-            text=f"Image {index+1} of {len(self.img_files)} - {filename}"
+            text=f"Image {index+1} of {len(self.img_files)}"
         )
 
         for slider in self.sliders.values():
@@ -171,7 +171,9 @@ class Ratings:
 
         timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
-        row = [img_id, version, ambiguous, self.rater_id, self.directory] + values + [time_taken, timestamp] 
+        dominant_emotion = max(emos, key=lambda e: self.sliders[e].get())
+
+        row = [img_id, version, ambiguous, self.rater_id, self.directory] + values + [dominant_emotion, time_taken, timestamp] 
         
         
         with open(self.csv_path, "a", newline="") as f:

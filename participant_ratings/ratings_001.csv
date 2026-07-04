@@ -1,0 +1,16 @@
+img_id,version,ambiguous,r_id,directory,angry,disgust,fear,happy,sad,surprise,neutral,dom_emotion,response_time_s,timestamp
+10_fear,b,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,8,0,0,0,0,0,10.814,05/07/2026 00:45:41
+17_fear,o,True,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,0,0,7,0,0,10.85,05/07/2026 00:45:52
+10_fear,b,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,fear,0,0,7,0,0,0,0,29.498,05/07/2026 00:50:54
+18_happy,l,True,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,7,0,0,0,happy,12.188,05/07/2026 01:03:22
+19_neutral,g,True,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,0,0,0,7,neutral,4.922,05/07/2026 01:03:27
+1_angry,b,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,0,7,0,0,sad,8.858,05/07/2026 01:03:36
+20_sad,b,True,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,7,0,0,0,0,0,disgust,3.537,05/07/2026 01:03:39
+27_sad,o,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,0,5,0,0,sad,3.56,05/07/2026 01:03:43
+28_surprised,l,True,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,5,0,0,0,0,0,disgust,4.039,05/07/2026 01:03:47
+29_angry,g,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,4,0,0,0,0,0,0,angry,8.214,05/07/2026 01:03:55
+30_disgust,b,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,0,0,4,0,surprise,5.952,05/07/2026 01:04:01
+4_happy,o,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,4,0,0,0,happy,4.171,05/07/2026 01:04:05
+7_surprised,o,True,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,0,0,0,0,5,0,surprise,9.421,05/07/2026 01:04:15
+8_angry,l,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,5,0,0,0,0,0,disgust,3.638,05/07/2026 01:04:18
+9_disgust,g,False,1,/Users/sheharadineththappavarige/Desktop/expAI2/Test_images/test_1,0,6,0,0,0,0,0,disgust,4.412,05/07/2026 01:04:23
