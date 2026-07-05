@@ -1,9 +1,11 @@
 """
 For collecting the human data  
 --------------------
-Displays the images form a directory one at a time, for each image, then the rater sets a 1-10 slider
-for each category of emotion - inline with the emotion categories from the AI models deepface and FER - the time taken
-for the rating will be recorded after each image and all the data will be recorded in a unique csv file for each participant 
+Displays the images form a directory one at a time, for each image, 
+then the rater sets a 1-10 slider for each category of emotion - inline with 
+the emotion categories from the AI models deepface and FER - the time taken
+for the rating will be recorded after each image and all the data will be 
+recorded in a unique csv file for each participant 
 
 
 """
@@ -22,7 +24,9 @@ from PIL import Image, ImageTk
 emos = ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"]
 valid_ext = (".jpg", ".jpeg", ".png", ".bmp", ".webp")
 
-csv_fields = ( ["img_id","version", "ambiguous", "r_id", "directory"] + emos + ["dominant_emotion", "response_time_s", "timestamp"])
+csv_fields = ( ["img_id","version", "ambiguous", "r_id", "directory"] + emos + 
+              ["dominant_emotion", "response_time_s", "timestamp"]
+            )
 
 output_dir = "participant_ratings"
 
@@ -35,6 +39,7 @@ def parse_filenames(filename):
     returns: (img_id, version, ambiguous(true/false))
     img_id -> 'number_emotion' ex: 1_happy
     version -> single letter version ex: o, b, g, l
+    
     """
 
     n = os.path.splitext(filename)[0]
