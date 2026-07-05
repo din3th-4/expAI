@@ -39,7 +39,7 @@ def parse_filenames(filename):
     returns: (img_id, version, ambiguous(true/false))
     img_id -> 'number_emotion' ex: 1_happy
     version -> single letter version ex: o, b, g, l
-    
+
     """
 
     n = os.path.splitext(filename)[0]
@@ -54,6 +54,22 @@ def parse_filenames(filename):
         img_id = "_".join(p[:-1])
     
     return img_id, version, ambiguous
+
+def get_dir_label(directory):
+    """
+    builds a short label to keep in the csv 'directory' column: parent_folder/folder_name
+    if the path only has one folder level, returns just the folder name
+    """
+
+    name = os.path.normpath(directory)
+    folder = os.path.basename(name)
+    parent = os.path.basename(os.path.dirname(name))    
+
+    if parent:
+        return f"{parent}/{folder}"
+    
+    return folder
+
 
 
 def get_already_rated(csv_path, directory): 
@@ -100,6 +116,7 @@ class Ratings:
         self.root = root 
         self.rater_id = rater_id 
         self.directory = directory 
+        self.dir_label = get_dir_label(directory) 
         self.img_files = img_files
         self.csv_path = csv_path 
 
@@ -178,7 +195,7 @@ class Ratings:
 
         dominant_emotion = max(emos, key=lambda e: self.sliders[e].get())
 
-        row = [img_id, version, ambiguous, self.rater_id, self.directory] + values + [dominant_emotion, time_taken, timestamp] 
+        row = [img_id, version, ambiguous, self.rater_id, self.dir_label] + values + [dominant_emotion, time_taken, timestamp] 
         
         
         with open(self.csv_path, "a", newline="") as f:
@@ -228,9 +245,10 @@ def main():
     if not os.path.isdir(directory):
         print(f"Error: {directory} is not a valid directory")
         return 
-
+    
+    dir_label = get_dir_label(directory)
     csv_path = b_csv_path(rater_id)
-    rated = get_already_rated(csv_path, directory)
+    rated = get_already_rated(csv_path, dir_label)
     img_files = get_img_list(directory, rated)
 
     if not img_files:
