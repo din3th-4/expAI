@@ -7,6 +7,7 @@ correlate to the ratings assigned by humans and AI
 import os 
 import csv 
 
+import cv2
 import mediapipe as mp 
 from mediapipe.tasks import python as mp_python
 from mediapipe.tasks.python import vision as mp_vision
@@ -50,7 +51,12 @@ def extract_features(landmarker, filepath):
     Runs the landmarker on on image and returns feature_scores
     a list of floats 
     """
-    image = mp.Image.create_from_file(filepath)
+    image_array = cv2.imread(filepath, cv2.IMREAD_COLOR)
+    if image_array is None:
+        return None
+
+    image_array = cv2.cvtColor(image_array, cv2.COLOR_BGR2RGB)
+    image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image_array)
     result = landmarker.detect(image)
     
     if not result.face_blendshapes:
