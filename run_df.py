@@ -7,7 +7,7 @@ from deepface import DeepFace
 import os  
 from datetime import datetime
 import time 
-import csv
+import csv 
 
 from utilsss import emos, csv_fields, get_dir_label, parse_filenames, get_already_rated, get_img_list
 
