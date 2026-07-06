@@ -33,4 +33,3 @@ csv_fields = (["img_id", "version", "ambiguous", "r_id", "directory"]
             )
 
 
-

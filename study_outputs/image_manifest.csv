@@ -1,0 +1,141 @@
+img_id,version,version_name,ambiguous,assigned_category,filename,image_path
+10_fear,b,Blur,False,fear,10_fear_b.png,Modified_images\10_fear_b.png
+10_fear,g,Greyscale,False,fear,10_fear_g.png,Modified_images\10_fear_g.png
+10_fear,l,Low resolution,False,fear,10_fear_l.png,Modified_images\10_fear_l.png
+10_fear,o,Original,False,fear,10_fear_o.png,Modified_images\10_fear_o.png
+11_happy,b,Blur,False,happy,11_happy_b.png,Modified_images\11_happy_b.png
+11_happy,g,Greyscale,False,happy,11_happy_g.png,Modified_images\11_happy_g.png
+11_happy,l,Low resolution,False,happy,11_happy_l.png,Modified_images\11_happy_l.png
+11_happy,o,Original,False,happy,11_happy_o.png,Modified_images\11_happy_o.png
+12_neutral,b,Blur,True,neutral,12_neutral_b_a.png,Modified_images\12_neutral_b_a.png
+12_neutral,g,Greyscale,True,neutral,12_neutral_g_a.png,Modified_images\12_neutral_g_a.png
+12_neutral,l,Low resolution,True,neutral,12_neutral_l_a.png,Modified_images\12_neutral_l_a.png
+12_neutral,o,Original,True,neutral,12_neutral_o_a.png,Modified_images\12_neutral_o_a.png
+13_sad,b,Blur,False,sad,13_sad_b.png,Modified_images\13_sad_b.png
+13_sad,g,Greyscale,False,sad,13_sad_g.png,Modified_images\13_sad_g.png
+13_sad,l,Low resolution,False,sad,13_sad_l.png,Modified_images\13_sad_l.png
+13_sad,o,Original,False,sad,13_sad_o.png,Modified_images\13_sad_o.png
+14_surprise,b,Blur,False,surprise,14_surprise_b.png,Modified_images\14_surprise_b.png
+14_surprise,g,Greyscale,False,surprise,14_surprise_g.png,Modified_images\14_surprise_g.png
+14_surprise,l,Low resolution,False,surprise,14_surprise_l.png,Modified_images\14_surprise_l.png
+14_surprise,o,Original,False,surprise,14_surprise_o.png,Modified_images\14_surprise_o.png
+15_angry,b,Blur,True,angry,15_angry_b_a.png,Modified_images\15_angry_b_a.png
+15_angry,g,Greyscale,True,angry,15_angry_g_a.png,Modified_images\15_angry_g_a.png
+15_angry,l,Low resolution,True,angry,15_angry_l_a.png,Modified_images\15_angry_l_a.png
+15_angry,o,Original,True,angry,15_angry_o_a.png,Modified_images\15_angry_o_a.png
+16_disgust,b,Blur,False,disgust,16_disgust_b.png,Modified_images\16_disgust_b.png
+16_disgust,g,Greyscale,False,disgust,16_disgust_g.png,Modified_images\16_disgust_g.png
+16_disgust,l,Low resolution,False,disgust,16_disgust_l.png,Modified_images\16_disgust_l.png
+16_disgust,o,Original,False,disgust,16_disgust_o.png,Modified_images\16_disgust_o.png
+17_fear,b,Blur,True,fear,17_fear_b_a.png,Modified_images\17_fear_b_a.png
+17_fear,g,Greyscale,True,fear,17_fear_g_a.png,Modified_images\17_fear_g_a.png
+17_fear,l,Low resolution,True,fear,17_fear_l_a.png,Modified_images\17_fear_l_a.png
+17_fear,o,Original,True,fear,17_fear_o_a.png,Modified_images\17_fear_o_a.png
+18_happy,b,Blur,True,happy,18_happy_b_a.png,Modified_images\18_happy_b_a.png
+18_happy,g,Greyscale,True,happy,18_happy_g_a.png,Modified_images\18_happy_g_a.png
+18_happy,l,Low resolution,True,happy,18_happy_l_a.png,Modified_images\18_happy_l_a.png
+18_happy,o,Original,True,happy,18_happy_o_a.png,Modified_images\18_happy_o_a.png
+19_neutral,b,Blur,True,neutral,19_neutral_b_a.png,Modified_images\19_neutral_b_a.png
+19_neutral,g,Greyscale,True,neutral,19_neutral_g_a.png,Modified_images\19_neutral_g_a.png
+19_neutral,l,Low resolution,True,neutral,19_neutral_l_a.png,Modified_images\19_neutral_l_a.png
+19_neutral,o,Original,True,neutral,19_neutral_o_a.png,Modified_images\19_neutral_o_a.png
+1_angry,b,Blur,False,angry,1_angry_b.png,Modified_images\1_angry_b.png
+1_angry,g,Greyscale,False,angry,1_angry_g.png,Modified_images\1_angry_g.png
+1_angry,l,Low resolution,False,angry,1_angry_l.png,Modified_images\1_angry_l.png
+1_angry,o,Original,False,angry,1_angry_o.png,Modified_images\1_angry_o.png
+20_sad,b,Blur,True,sad,20_sad_b_a.png,Modified_images\20_sad_b_a.png
+20_sad,g,Greyscale,True,sad,20_sad_g_a.png,Modified_images\20_sad_g_a.png
+20_sad,l,Low resolution,True,sad,20_sad_l_a.png,Modified_images\20_sad_l_a.png
+20_sad,o,Original,True,sad,20_sad_o_a.png,Modified_images\20_sad_o_a.png
+21_surprise,b,Blur,False,surprise,21_surprise_b.png,Modified_images\21_surprise_b.png
+21_surprise,g,Greyscale,False,surprise,21_surprise_g.png,Modified_images\21_surprise_g.png
+21_surprise,l,Low resolution,False,surprise,21_surprise_l.png,Modified_images\21_surprise_l.png
+21_surprise,o,Original,False,surprise,21_surprise_o.png,Modified_images\21_surprise_o.png
+22_angry,b,Blur,False,angry,22_angry_b.png,Modified_images\22_angry_b.png
+22_angry,g,Greyscale,False,angry,22_angry_g.png,Modified_images\22_angry_g.png
+22_angry,l,Low resolution,False,angry,22_angry_l.png,Modified_images\22_angry_l.png
+22_angry,o,Original,False,angry,22_angry_o.png,Modified_images\22_angry_o.png
+23_disgust,b,Blur,False,disgust,23_disgust_b.png,Modified_images\23_disgust_b.png
+23_disgust,g,Greyscale,False,disgust,23_disgust_g.png,Modified_images\23_disgust_g.png
+23_disgust,l,Low resolution,False,disgust,23_disgust_l.png,Modified_images\23_disgust_l.png
+23_disgust,o,Original,False,disgust,23_disgust_o.png,Modified_images\23_disgust_o.png
+24_fear,b,Blur,False,fear,24_fear_b.png,Modified_images\24_fear_b.png
+24_fear,g,Greyscale,False,fear,24_fear_g.png,Modified_images\24_fear_g.png
+24_fear,l,Low resolution,False,fear,24_fear_l.png,Modified_images\24_fear_l.png
+24_fear,o,Original,False,fear,24_fear_o.png,Modified_images\24_fear_o.png
+25_happy,b,Blur,False,happy,25_happy_b.png,Modified_images\25_happy_b.png
+25_happy,g,Greyscale,False,happy,25_happy_g.png,Modified_images\25_happy_g.png
+25_happy,l,Low resolution,False,happy,25_happy_l.png,Modified_images\25_happy_l.png
+25_happy,o,Original,False,happy,25_happy_o.png,Modified_images\25_happy_o.png
+26_neutral,b,Blur,False,neutral,26_neutral_b.png,Modified_images\26_neutral_b.png
+26_neutral,g,Greyscale,False,neutral,26_neutral_g.png,Modified_images\26_neutral_g.png
+26_neutral,l,Low resolution,False,neutral,26_neutral_l.png,Modified_images\26_neutral_l.png
+26_neutral,o,Original,False,neutral,26_neutral_o.png,Modified_images\26_neutral_o.png
+27_sad,b,Blur,False,sad,27_sad_b.png,Modified_images\27_sad_b.png
+27_sad,g,Greyscale,False,sad,27_sad_g.png,Modified_images\27_sad_g.png
+27_sad,l,Low resolution,False,sad,27_sad_l.png,Modified_images\27_sad_l.png
+27_sad,o,Original,False,sad,27_sad_o.png,Modified_images\27_sad_o.png
+28_surprise,b,Blur,True,surprise,28_surprise_b_a.png,Modified_images\28_surprise_b_a.png
+28_surprise,g,Greyscale,True,surprise,28_surprise_g_a.png,Modified_images\28_surprise_g_a.png
+28_surprise,l,Low resolution,True,surprise,28_surprise_l_a.png,Modified_images\28_surprise_l_a.png
+28_surprise,o,Original,True,surprise,28_surprise_o_a.png,Modified_images\28_surprise_o_a.png
+29_angry,b,Blur,False,angry,29_angry_b.png,Modified_images\29_angry_b.png
+29_angry,g,Greyscale,False,angry,29_angry_g.png,Modified_images\29_angry_g.png
+29_angry,l,Low resolution,False,angry,29_angry_l.png,Modified_images\29_angry_l.png
+29_angry,o,Original,False,angry,29_angry_o.png,Modified_images\29_angry_o.png
+2_disgust,b,Blur,False,disgust,2_disgust_b.png,Modified_images\2_disgust_b.png
+2_disgust,g,Greyscale,False,disgust,2_disgust_g.png,Modified_images\2_disgust_g.png
+2_disgust,l,Low resolution,False,disgust,2_disgust_l.png,Modified_images\2_disgust_l.png
+2_disgust,o,Original,False,disgust,2_disgust_o.png,Modified_images\2_disgust_o.png
+30_disgust,b,Blur,False,disgust,30_disgust_b.png,Modified_images\30_disgust_b.png
+30_disgust,g,Greyscale,False,disgust,30_disgust_g.png,Modified_images\30_disgust_g.png
+30_disgust,l,Low resolution,False,disgust,30_disgust_l.png,Modified_images\30_disgust_l.png
+30_disgust,o,Original,False,disgust,30_disgust_o.png,Modified_images\30_disgust_o.png
+31_fear,b,Blur,False,fear,31_fear_b.png,Modified_images\31_fear_b.png
+31_fear,g,Greyscale,False,fear,31_fear_g.png,Modified_images\31_fear_g.png
+31_fear,l,Low resolution,False,fear,31_fear_l.png,Modified_images\31_fear_l.png
+31_fear,o,Original,False,fear,31_fear_o.png,Modified_images\31_fear_o.png
+32_happy,b,Blur,False,happy,32_happy_b.png,Modified_images\32_happy_b.png
+32_happy,g,Greyscale,False,happy,32_happy_g.png,Modified_images\32_happy_g.png
+32_happy,l,Low resolution,False,happy,32_happy_l.png,Modified_images\32_happy_l.png
+32_happy,o,Original,False,happy,32_happy_o.png,Modified_images\32_happy_o.png
+33_neutral,b,Blur,False,neutral,33_neutral_b.png,Modified_images\33_neutral_b.png
+33_neutral,g,Greyscale,False,neutral,33_neutral_g.png,Modified_images\33_neutral_g.png
+33_neutral,l,Low resolution,False,neutral,33_neutral_l.png,Modified_images\33_neutral_l.png
+33_neutral,o,Original,False,neutral,33_neutral_o.png,Modified_images\33_neutral_o.png
+34_sad,b,Blur,False,sad,34_sad_b.png,Modified_images\34_sad_b.png
+34_sad,g,Greyscale,False,sad,34_sad_g.png,Modified_images\34_sad_g.png
+34_sad,l,Low resolution,False,sad,34_sad_l.png,Modified_images\34_sad_l.png
+34_sad,o,Original,False,sad,34_sad_o.png,Modified_images\34_sad_o.png
+35_surprise,b,Blur,False,surprise,35_surprise_b.png,Modified_images\35_surprise_b.png
+35_surprise,g,Greyscale,False,surprise,35_surprise_g.png,Modified_images\35_surprise_g.png
+35_surprise,l,Low resolution,False,surprise,35_surprise_l.png,Modified_images\35_surprise_l.png
+35_surprised,o,Original,False,surprised,35_surprised_o.png,Modified_images\35_surprised_o.png
+3_fear,b,Blur,False,fear,3_fear_b.png,Modified_images\3_fear_b.png
+3_fear,g,Greyscale,False,fear,3_fear_g.png,Modified_images\3_fear_g.png
+3_fear,l,Low resolution,False,fear,3_fear_l.png,Modified_images\3_fear_l.png
+3_fear,o,Original,False,fear,3_fear_o.png,Modified_images\3_fear_o.png
+4_happy,b,Blur,True,happy,4_happy_b_a.png,Modified_images\4_happy_b_a.png
+4_happy,g,Greyscale,True,happy,4_happy_g_a.png,Modified_images\4_happy_g_a.png
+4_happy,l,Low resolution,True,happy,4_happy_l_a.png,Modified_images\4_happy_l_a.png
+4_happy,o,Original,True,happy,4_happy_o_a.png,Modified_images\4_happy_o_a.png
+5_neutral,b,Blur,False,neutral,5_neutral_b.png,Modified_images\5_neutral_b.png
+5_neutral,g,Greyscale,False,neutral,5_neutral_g.png,Modified_images\5_neutral_g.png
+5_neutral,l,Low resolution,False,neutral,5_neutral_l.png,Modified_images\5_neutral_l.png
+5_neutral,o,Original,False,neutral,5_neutral_o.png,Modified_images\5_neutral_o.png
+6_sad,b,Blur,False,sad,6_sad_b.png,Modified_images\6_sad_b.png
+6_sad,g,Greyscale,False,sad,6_sad_g.png,Modified_images\6_sad_g.png
+6_sad,l,Low resolution,False,sad,6_sad_l.png,Modified_images\6_sad_l.png
+6_sad,o,Original,False,sad,6_sad_o.png,Modified_images\6_sad_o.png
+7_surprise,b,Blur,True,surprise,7_surprise_b_a.png,Modified_images\7_surprise_b_a.png
+7_surprise,g,Greyscale,True,surprise,7_surprise_g_a.png,Modified_images\7_surprise_g_a.png
+7_surprise,l,Low resolution,True,surprise,7_surprise_l_a.png,Modified_images\7_surprise_l_a.png
+7_surprise,o,Original,True,surprise,7_surprise_o_a.png,Modified_images\7_surprise_o_a.png
+8_angry,b,Blur,False,angry,8_angry_b.png,Modified_images\8_angry_b.png
+8_angry,g,Greyscale,False,angry,8_angry_g.png,Modified_images\8_angry_g.png
+8_angry,l,Low resolution,False,angry,8_angry_l.png,Modified_images\8_angry_l.png
+8_angry,o,Original,False,angry,8_angry_o.png,Modified_images\8_angry_o.png
+9_disgust,b,Blur,False,disgust,9_disgust_b.png,Modified_images\9_disgust_b.png
+9_disgust,g,Greyscale,False,disgust,9_disgust_g.png,Modified_images\9_disgust_g.png
+9_disgust,l,Low resolution,False,disgust,9_disgust_l.png,Modified_images\9_disgust_l.png
+9_disgust,o,Original,False,disgust,9_disgust_o.png,Modified_images\9_disgust_o.png

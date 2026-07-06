@@ -1,0 +1,5 @@
+source,rows,unique_keys,usable_rows,stale_rows
+Image manifest,140,140,140,0
+Human raw,258,141,255,3
+FER,140,140,130,9
+DeepFace,140,140,140,0
