@@ -23,7 +23,7 @@ from PIL import Image, ImageTk
 
 from utilsss import emos, csv_fields, get_dir_label, parse_filenames, get_already_rated, get_img_list
 
-
+output_dir = "participant_ratings"
 
 
 class Ratings:
