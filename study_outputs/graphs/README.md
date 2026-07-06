@@ -15,6 +15,9 @@ Generated from the current CSV files in `study_outputs`.
 - `11_agreement_by_assigned_category.png` — Agreement stratified by intended category.
 - `12_entropy_scatter.png` — Human uncertainty versus model uncertainty.
 - `13_mediapipe_top_associations.png` — Strongest MediaPipe correlations.
+- `13a_mediapipe_top_associations_human_pooled.png` — Strongest MediaPipe correlations for human pooled emotion scores.
+- `13b_mediapipe_top_associations_fer.png` — Strongest MediaPipe correlations for FER emotion scores.
+- `13c_mediapipe_top_associations_deepface.png` — Strongest MediaPipe correlations for DeepFace emotion scores.
 - `14_mediapipe_correlation_heatmap.png` — MediaPipe feature-target correlation map.
 - `15_mediapipe_feature_version_lines.png` — Key MediaPipe feature means by version.
 - `16_data_relationship_diagram.png` — High-level data table relationship diagram.

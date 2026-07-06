@@ -404,6 +404,58 @@ def plot_mediapipe_top_associations(associations):
     return savefig("13_mediapipe_top_associations.png")
 
 
+def plot_mediapipe_top_associations_by_model(associations):
+    model_specs = [
+        (
+            "human_pooled_reference_",
+            "Human pooled",
+            "13a_mediapipe_top_associations_human_pooled.png",
+            "#4e79a7",
+        ),
+        (
+            "fer_",
+            "FER",
+            "13b_mediapipe_top_associations_fer.png",
+            "#f28e2b",
+        ),
+        (
+            "deepface_",
+            "DeepFace",
+            "13c_mediapipe_top_associations_deepface.png",
+            "#59a14f",
+        ),
+    ]
+    paths = []
+    clean = associations.dropna(subset=["pearson_correlation"]).copy()
+    clean["absolute"] = clean["pearson_correlation"].abs()
+
+    for prefix, title, filename, positive_color in model_specs:
+        data = clean[clean["target"].str.startswith(prefix)].copy()
+        if data.empty:
+            continue
+        top = data.nlargest(25, "absolute").sort_values("pearson_correlation")
+        labels = (
+            top["mediapipe_feature"]
+            + " → "
+            + top["target"].str.replace(prefix, "", regex=False)
+        )
+
+        fig, axis = plt.subplots(figsize=(11, 8))
+        axis.barh(
+            labels,
+            top["pearson_correlation"],
+            color=np.where(top["pearson_correlation"] >= 0, positive_color, "#e15759"),
+        )
+        axis.axvline(0, color="#333", linewidth=0.8)
+        format_axes(
+            axis,
+            f"Top MediaPipe associations with {title} emotion scores",
+            xlabel="Pearson correlation",
+        )
+        paths.append(savefig(filename))
+    return paths
+
+
 def plot_mediapipe_heatmap(associations):
     data = associations.dropna(subset=["pearson_correlation"]).copy()
     keep_targets = [
@@ -532,6 +584,9 @@ def write_index(paths):
         "11_agreement_by_assigned_category.png": "Agreement stratified by intended category.",
         "12_entropy_scatter.png": "Human uncertainty versus model uncertainty.",
         "13_mediapipe_top_associations.png": "Strongest MediaPipe correlations.",
+        "13a_mediapipe_top_associations_human_pooled.png": "Strongest MediaPipe correlations for human pooled emotion scores.",
+        "13b_mediapipe_top_associations_fer.png": "Strongest MediaPipe correlations for FER emotion scores.",
+        "13c_mediapipe_top_associations_deepface.png": "Strongest MediaPipe correlations for DeepFace emotion scores.",
         "14_mediapipe_correlation_heatmap.png": "MediaPipe feature-target correlation map.",
         "15_mediapipe_feature_version_lines.png": "Key MediaPipe feature means by version.",
         "16_data_relationship_diagram.png": "High-level data table relationship diagram.",
@@ -581,6 +636,7 @@ def main():
         plot_assigned_category_agreement(comparison),
         plot_entropy_scatter(comparison),
         plot_mediapipe_top_associations(associations),
+        *plot_mediapipe_top_associations_by_model(associations),
         plot_mediapipe_heatmap(associations),
         plot_key_mediapipe_features(media),
         plot_data_relationship_diagram(),
