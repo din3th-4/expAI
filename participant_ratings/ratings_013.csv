@@ -1,0 +1,16 @@
+img_id,version,ambiguous,r_id,directory,angry,disgust,fear,happy,sad,surprise,neutral,dominant_emotion,response_time_s,timestamp
+10_fear,o,False,013,Test_images/test_3,0,5,5,0,0,6,0,surprise,72.04,06/07/2026 12:55:53
+11_happy,l,False,013,Test_images/test_3,0,0,0,10,0,5,0,happy,12.407,06/07/2026 12:56:06
+12_neutral,g,True,013,Test_images/test_3,2,0,0,0,2,0,5,neutral,40.728,06/07/2026 12:56:46
+13_sad,b,False,013,Test_images/test_3,0,0,0,0,10,0,0,sad,9.322,06/07/2026 12:56:56
+1_angry,l,False,013,Test_images/test_3,5,2,0,0,0,3,0,angry,24.798,06/07/2026 12:57:21
+20_sad,o,True,013,Test_images/test_3,1,0,0,0,6,0,0,sad,16.971,06/07/2026 12:57:38
+21_surprise,l,False,013,Test_images/test_3,0,0,0,2,0,6,0,surprise,17.765,06/07/2026 12:57:55
+22_angry,g,False,013,Test_images/test_3,3,2,0,2,0,0,0,angry,21.215,06/07/2026 12:58:17
+23_disgust,b,False,013,Test_images/test_3,0,5,1,0,0,5,0,disgust,20.446,06/07/2026 12:58:37
+2_disgust,g,False,013,Test_images/test_3,0,5,0,0,0,2,0,disgust,13.995,06/07/2026 12:58:51
+30_disgust,o,False,013,Test_images/test_3,0,1,0,0,0,2,0,surprise,46.128,06/07/2026 12:59:37
+31_fear,l,False,013,Test_images/test_3,0,0,0,0,10,0,0,sad,8.161,06/07/2026 12:59:45
+32_happy,g,False,013,Test_images/test_3,0,0,0,5,0,0,1,happy,13.429,06/07/2026 12:59:59
+33_neutral,b,False,013,Test_images/test_3,0,0,0,0,0,0,10,neutral,8.385,06/07/2026 13:00:07
+3_fear,b,False,013,Test_images/test_3,0,3,7,0,0,10,0,surprise,15.351,06/07/2026 13:00:23

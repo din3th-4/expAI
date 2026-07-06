@@ -15,7 +15,6 @@ import os
 import time  
 from datetime import datetime
 import csv 
-import sys 
 
 import tkinter as tk 
 from tkinter import simpledialog, filedialog, messagebox
