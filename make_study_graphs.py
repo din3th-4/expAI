@@ -1,9 +1,3 @@
-"""Generate the complete graph and data-diagram pack for the emotion study.
-
-Run after ``study_analysis.py`` has rebuilt the CSV files in ``study_outputs``.
-The figures are saved to ``study_outputs/graphs``.
-"""
-
 from pathlib import Path
 import textwrap
 
@@ -13,6 +7,11 @@ import pandas as pd
 
 
 OUTPUT_DIR = Path("study_outputs")
+RED = "#e15759"
+BLUE = "#4e79a7"
+ORANGE = "#f28e2b"
+GREEN = "#59a14f"
+PINK = "#b07aa1"
 GRAPH_DIR = OUTPUT_DIR / "graphs"
 EMOTIONS = ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"]
 VERSION_ORDER = ["o", "b", "g", "l"]
@@ -23,11 +22,11 @@ VERSION_NAMES = {
     "l": "Low resolution",
 }
 SOURCE_COLORS = {
-    "Human pooled reference": "#4e79a7",
-    "Humans (version-specific)": "#4e79a7",
-    "FER": "#f28e2b",
-    "DeepFace": "#59a14f",
-    "MediaPipe": "#b07aa1",
+    "Human pooled reference": BLUE,
+    "Humans (version-specific)": BLUE,
+    "FER": ORANGE,
+    "DeepFace": GREEN,
+    "MediaPipe": PINK,
 }
 
 
@@ -70,7 +69,7 @@ def plot_coverage(coverage):
         x,
         data["missing_or_stale"],
         bottom=data["usable_rows"],
-        color="#e15759",
+        color=RED,
         label="Stale or unusable rows",
     )
     axis.set_xticks(x, data["source"], rotation=25, ha="right")
@@ -83,56 +82,7 @@ def plot_coverage(coverage):
 
 
 def plot_study_pipeline(coverage):
-    fig, axis = plt.subplots(figsize=(13, 4.5))
-    axis.axis("off")
-    axis.set_xlim(0, 1)
-    axis.set_ylim(0, 1)
-    boxes = [
-        ("Web-selected\nimage set", "Researcher-assigned categories,\nnot certified ground truth"),
-        ("Image versions", "Original, blur, greyscale,\nlow resolution"),
-        ("Human ratings", "Seven-emotion participant\nscore vectors"),
-        ("AI emotion models", "FER + DeepFace\nseven-emotion vectors"),
-        ("MediaPipe", "Facial blendshape\nfeature vectors"),
-        ("Exploratory analysis", "Agreement, ambiguity,\nrobustness, associations"),
-    ]
-    xs = np.linspace(0.08, 0.92, len(boxes))
-    for i, (title, body) in enumerate(boxes):
-        x = xs[i]
-        rect = plt.Rectangle(
-            (x - 0.068, 0.44), 0.136, 0.34,
-            facecolor="#f4f6f8", edgecolor="#4e79a7", linewidth=1.5
-        )
-        axis.add_patch(rect)
-        axis.text(x, 0.68, title, ha="center", va="center",
-                  fontsize=10, weight="bold")
-        axis.text(
-            x,
-            0.54,
-            "\n".join(textwrap.wrap(body.replace("\n", " "), width=24)),
-            ha="center",
-            va="center",
-            fontsize=8,
-        )
-        if i < len(boxes) - 1:
-            axis.annotate(
-                "",
-                xy=(xs[i + 1] - 0.078, 0.61),
-                xytext=(x + 0.078, 0.61),
-                arrowprops={"arrowstyle": "->", "lw": 1.5, "color": "#555"},
-            )
-
-    counts = ", ".join(
-        f"{row.source}: {row.usable_rows}/{row.rows}"
-        for row in coverage.itertuples()
-    )
-    axis.text(
-        0.5, 0.2,
-        "Current coverage: " + counts,
-        ha="center", va="center", fontsize=9,
-        bbox={"boxstyle": "round,pad=0.4", "fc": "#fff7e6", "ec": "#f28e2b"},
-    )
-    axis.set_title("Study data pipeline diagram", fontsize=14, weight="bold")
-    return savefig("02_study_pipeline_diagram.png")
+    pass
 
 
 def plot_mean_emotion_profiles(human, models):
@@ -166,82 +116,15 @@ def plot_mean_emotion_profiles(human, models):
 
 
 def plot_human_heatmap(human):
-    data = human.sort_values(["ambiguous", "img_id"]).set_index("img_id")
-    matrix = data[EMOTIONS].to_numpy()
-    fig, axis = plt.subplots(figsize=(10, max(6, len(data) * 0.22)))
-    im = axis.imshow(matrix, aspect="auto", cmap="YlGnBu", vmin=0, vmax=1)
-    axis.set_xticks(np.arange(len(EMOTIONS)), EMOTIONS, rotation=35, ha="right")
-    labels = [
-        f"{idx}{' (A)' if amb else ''}"
-        for idx, amb in zip(data.index, data["ambiguous"])
-    ]
-    axis.set_yticks(np.arange(len(data)), labels, fontsize=8)
-    axis.set_title("Human pooled emotion profiles by base image",
-                   fontsize=13, weight="bold", pad=12)
-    fig.colorbar(im, ax=axis, label="Normalized human score")
-    return savefig("04_human_profile_heatmap.png")
+    pass
 
 
 def plot_similarity_boxplots(comparison):
-    metric = "cosine_similarity"
-    data = comparison[comparison["detected"].fillna(True)].dropna(subset=[metric])
-    groups = []
-    labels = []
-    colors = []
-    for source in ["FER", "DeepFace"]:
-        for version in VERSION_ORDER:
-            values = data[(data["source"] == source) & (data["version"] == version)][metric]
-            groups.append(values)
-            labels.append(f"{source}\n{VERSION_NAMES[version]}")
-            colors.append(SOURCE_COLORS[source])
-
-    fig, axis = plt.subplots(figsize=(12, 5))
-    bp = axis.boxplot(groups, patch_artist=True, showmeans=True)
-    for patch, color in zip(bp["boxes"], colors):
-        patch.set_facecolor(color)
-        patch.set_alpha(0.55)
-    axis.set_xticks(np.arange(1, len(labels) + 1), labels, rotation=30, ha="right")
-    axis.set_ylim(0, 1.05)
-    format_axes(axis, "Human-AI cosine similarity by model and image version",
-                ylabel="Cosine similarity")
-    return savefig("05_similarity_distributions.png")
+    pass
 
 
 def plot_condition_metrics(conditions):
-    metrics = [
-        ("mean_cosine_similarity", "Mean cosine similarity", "Higher = closer"),
-        ("mean_absolute_error", "Mean absolute error", "Lower = closer"),
-        ("dominant_agreement_rate", "Dominant-emotion agreement", "Higher = more same labels"),
-    ]
-    fig, axes = plt.subplots(1, 3, figsize=(16, 5), sharex=False)
-    for axis, (metric, title, ylabel) in zip(axes, metrics):
-        pivot = conditions.pivot_table(
-            index=["version_name", "ambiguous"],
-            columns="source",
-            values=metric,
-            aggfunc="mean",
-        )
-        labels = [
-            f"{version}\n{'Ambiguous' if amb else 'Non-ambiguous'}"
-            for version, amb in pivot.index
-        ]
-        x = np.arange(len(pivot))
-        width = 0.35
-        for i, source in enumerate(["FER", "DeepFace"]):
-            if source in pivot:
-                axis.bar(
-                    x + (i - 0.5) * width,
-                    pivot[source],
-                    width,
-                    label=source,
-                    color=SOURCE_COLORS[source],
-                )
-        axis.set_xticks(x, labels, rotation=35, ha="right", fontsize=8)
-        format_axes(axis, title, ylabel=ylabel)
-        if metric != "mean_absolute_error":
-            axis.set_ylim(0, 1)
-    axes[0].legend(frameon=False)
-    return savefig("06_condition_metric_panels.png")
+    pass
 
 
 def plot_ambiguity_summary(ambiguity):
@@ -259,9 +142,9 @@ def plot_ambiguity_summary(ambiguity):
         x = np.arange(len(pivot))
         width = 0.35
         axis.bar(x - width / 2, pivot.get(False, np.nan), width,
-                 label="Non-ambiguous", color="#4e79a7")
+                 label="Non-ambiguous", color=BLUE)
         axis.bar(x + width / 2, pivot.get(True, np.nan), width,
-                 label="Ambiguous", color="#e15759")
+                 label="Ambiguous", color=RED)
         axis.set_xticks(x, pivot.index, rotation=20, ha="right")
         format_axes(axis, title, ylabel=ylabel)
         if metric != "mean_entropy":
@@ -296,26 +179,7 @@ def plot_robustness(robustness):
 
 
 def plot_robustness_scatter(robustness):
-    data = robustness.dropna(subset=["cosine_to_original", "mean_absolute_change"])
-    fig, axis = plt.subplots(figsize=(8, 6))
-    for source, group in data.groupby("source"):
-        axis.scatter(
-            group["mean_absolute_change"],
-            group["cosine_to_original"],
-            s=42,
-            alpha=0.75,
-            label=source,
-            color=SOURCE_COLORS.get(source),
-        )
-    axis.set_ylim(0, 1.05)
-    format_axes(
-        axis,
-        "Robustness tradeoff: vector change vs similarity to original",
-        xlabel="Mean absolute change from original",
-        ylabel="Cosine similarity to original",
-    )
-    axis.legend(frameon=False)
-    return savefig("09_robustness_scatter.png")
+    pass
 
 
 def plot_confusion_matrices(comparison):
@@ -347,61 +211,11 @@ def plot_confusion_matrices(comparison):
 
 
 def plot_assigned_category_agreement(comparison):
-    data = comparison[comparison["detected"].fillna(True)]
-    pivot = data.pivot_table(
-        index="assigned_category",
-        columns="source",
-        values="dominant_agreement",
-        aggfunc="mean",
-    ).reindex(EMOTIONS)
-    fig, axis = plt.subplots(figsize=(10, 5))
-    x = np.arange(len(pivot))
-    width = 0.35
-    for i, source in enumerate(["FER", "DeepFace"]):
-        axis.bar(x + (i - 0.5) * width, pivot[source], width,
-                 label=source, color=SOURCE_COLORS[source])
-    axis.set_xticks(x, pivot.index, rotation=30, ha="right")
-    axis.set_ylim(0, 1)
-    format_axes(axis, "Dominant agreement by researcher-assigned category",
-                ylabel="Human-model dominant agreement rate")
-    axis.legend(frameon=False)
-    return savefig("11_agreement_by_assigned_category.png")
+    pass
 
 
 def plot_entropy_scatter(comparison):
-    data = comparison[comparison["detected"].fillna(True)].dropna(
-        subset=["human_entropy", "model_entropy"]
-    )
-    fig, axis = plt.subplots(figsize=(7, 6))
-    for source, group in data.groupby("source"):
-        axis.scatter(group["human_entropy"], group["model_entropy"],
-                     s=45, alpha=0.75, label=source,
-                     color=SOURCE_COLORS.get(source))
-    high = max(data["human_entropy"].max(), data["model_entropy"].max()) * 1.05
-    axis.plot([0, high], [0, high], color="#777", linestyle="--", linewidth=1)
-    axis.set_xlim(0, high)
-    axis.set_ylim(0, high)
-    format_axes(axis, "Human vs model entropy",
-                xlabel="Human entropy", ylabel="Model entropy")
-    axis.legend(frameon=False)
-    return savefig("12_entropy_scatter.png")
-
-
-def plot_mediapipe_top_associations(associations):
-    data = associations.dropna(subset=["pearson_correlation"]).copy()
-    data["absolute"] = data["pearson_correlation"].abs()
-    top = data.nlargest(30, "absolute").sort_values("pearson_correlation")
-    fig, axis = plt.subplots(figsize=(12, 9))
-    labels = top["mediapipe_feature"] + " → " + top["target"]
-    axis.barh(
-        labels,
-        top["pearson_correlation"],
-        color=np.where(top["pearson_correlation"] >= 0, "#4e79a7", "#e15759"),
-    )
-    axis.axvline(0, color="#333", linewidth=0.8)
-    format_axes(axis, "Top MediaPipe feature associations",
-                xlabel="Pearson correlation")
-    return savefig("13_mediapipe_top_associations.png")
+    pass
 
 
 def plot_mediapipe_top_associations_by_model(associations):
@@ -410,19 +224,19 @@ def plot_mediapipe_top_associations_by_model(associations):
             "human_pooled_reference_",
             "Human pooled",
             "13a_mediapipe_top_associations_human_pooled.png",
-            "#4e79a7",
+            BLUE,
         ),
         (
             "fer_",
             "FER",
             "13b_mediapipe_top_associations_fer.png",
-            "#f28e2b",
+            ORANGE,
         ),
         (
             "deepface_",
             "DeepFace",
             "13c_mediapipe_top_associations_deepface.png",
-            "#59a14f",
+            GREEN,
         ),
     ]
     paths = []
@@ -444,7 +258,7 @@ def plot_mediapipe_top_associations_by_model(associations):
         axis.barh(
             labels,
             top["pearson_correlation"],
-            color=np.where(top["pearson_correlation"] >= 0, positive_color, "#e15759"),
+            color=np.where(top["pearson_correlation"] >= 0, positive_color, RED),
         )
         axis.axvline(0, color="#333", linewidth=0.8)
         format_axes(
@@ -457,45 +271,7 @@ def plot_mediapipe_top_associations_by_model(associations):
 
 
 def plot_mediapipe_heatmap(associations):
-    data = associations.dropna(subset=["pearson_correlation"]).copy()
-    keep_targets = [
-        target for target in data["target"].unique()
-        if target.startswith("human_pooled_reference_")
-        or target.startswith("fer_")
-        or target.startswith("deepface_")
-    ]
-    data = data[data["target"].isin(keep_targets)]
-    data["absolute"] = data["pearson_correlation"].abs()
-    top_features = (
-        data.groupby("mediapipe_feature")["absolute"]
-        .max()
-        .nlargest(14)
-        .index
-    )
-    short_targets = []
-    for target in keep_targets:
-        readable = (
-            target.replace("human_pooled_reference_", "human_")
-            .replace("deepface_", "df_")
-            .replace("fer_", "fer_")
-        )
-        short_targets.append(readable)
-    mapping = dict(zip(keep_targets, short_targets))
-    matrix = data[data["mediapipe_feature"].isin(top_features)].pivot_table(
-        index="mediapipe_feature",
-        columns="target",
-        values="pearson_correlation",
-        aggfunc="mean",
-    )
-    matrix = matrix.reindex(top_features)
-    matrix = matrix.rename(columns=mapping)
-    fig, axis = plt.subplots(figsize=(14, 8))
-    im = axis.imshow(matrix.fillna(0), aspect="auto", cmap="coolwarm", vmin=-1, vmax=1)
-    axis.set_xticks(np.arange(len(matrix.columns)), matrix.columns, rotation=45, ha="right")
-    axis.set_yticks(np.arange(len(matrix.index)), matrix.index)
-    axis.set_title("MediaPipe feature correlation heatmap", fontsize=13, weight="bold", pad=12)
-    fig.colorbar(im, ax=axis, label="Pearson correlation")
-    return savefig("14_mediapipe_correlation_heatmap.png")
+    pass
 
 
 def plot_key_mediapipe_features(media):
