@@ -4,7 +4,6 @@ import argparse
 import os
 from pathlib import Path
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -372,76 +371,7 @@ def mediapipe_associations(path, manifest, human_reference, models, comparison):
 
 
 def make_figures(comparison, robustness, ambiguity, associations, output_dir):
-    colors = {"FER": "#f28e2b", "DeepFace": "#59a14f"}
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5), sharey=True)
-    for axis, ambiguous in zip(axes, [False, True]):
-        data = comparison[comparison["ambiguous"] == ambiguous]
-        summary = data.groupby(["version", "source"])["cosine_similarity"].mean()
-        x = np.arange(len(VERSIONS))
-        for offset, source in enumerate(colors):
-            values = [summary.get((version, source), np.nan) for version in VERSIONS]
-            axis.bar(x + (offset - 0.5) * 0.36, values, 0.36,
-                     label=source, color=colors[source])
-        axis.set_xticks(x, [VERSION_NAMES[v] for v in VERSIONS])
-        axis.set_ylim(0, 1)
-        axis.set_title("Ambiguous" if ambiguous else "Non-ambiguous")
-        axis.grid(axis="y", alpha=0.25)
-    axes[0].set_ylabel("Cosine similarity to pooled human response")
-    axes[1].legend()
-    fig.suptitle("Human–AI multidimensional correspondence")
-    fig.tight_layout()
-    fig.savefig(output_dir / "human_ai_correspondence.png", dpi=180)
-    plt.close(fig)
-
-    fig, axis = plt.subplots(figsize=(10, 5))
-    summary = robustness.groupby(["version", "source"])["cosine_to_original"].mean()
-    modified_versions = ["b", "g", "l"]
-    sources = list(dict.fromkeys(robustness["source"]))
-    x = np.arange(len(modified_versions))
-    width = 0.8 / len(sources)
-    for index, source in enumerate(sources):
-        values = [summary.get((version, source), np.nan)
-                  for version in modified_versions]
-        axis.bar(x + (index - (len(sources) - 1) / 2) * width,
-                 values, width, label=source)
-    axis.set_xticks(x, [VERSION_NAMES[v] for v in modified_versions])
-    axis.set_ylim(0, 1)
-    axis.set_ylabel("Cosine similarity to original version")
-    axis.set_title("Response robustness under image modification")
-    axis.grid(axis="y", alpha=0.25)
-    axis.legend()
-    fig.tight_layout()
-    fig.savefig(output_dir / "modification_robustness.png", dpi=180)
-    plt.close(fig)
-
-    fig, axis = plt.subplots(figsize=(9, 5))
-    pivot = ambiguity.pivot(index="source", columns="ambiguous", values="mean_entropy")
-    pivot = pivot.rename(columns={False: "Non-ambiguous", True: "Ambiguous"})
-    pivot.plot.bar(ax=axis)
-    axis.set_ylabel("Mean normalized entropy")
-    axis.set_title("Response mixture in researcher-designated ambiguity groups")
-    axis.set_ylim(0, 1)
-    axis.tick_params(axis="x", rotation=20)
-    axis.grid(axis="y", alpha=0.25)
-    fig.tight_layout()
-    fig.savefig(output_dir / "ambiguity_entropy.png", dpi=180)
-    plt.close(fig)
-
-    if associations is not None and not associations.empty:
-        strongest = associations.dropna().copy()
-        strongest["absolute"] = strongest["pearson_correlation"].abs()
-        strongest = strongest.nlargest(25, "absolute").sort_values("pearson_correlation")
-        fig, axis = plt.subplots(figsize=(11, 8))
-        labels = strongest["mediapipe_feature"] + " → " + strongest["target"]
-        axis.barh(labels, strongest["pearson_correlation"],
-                  color=np.where(strongest["pearson_correlation"] >= 0,
-                                 "#4e79a7", "#e15759"))
-        axis.axvline(0, color="black", linewidth=0.8)
-        axis.set_xlabel("Pearson correlation (exploratory)")
-        axis.set_title("Strongest MediaPipe feature associations")
-        fig.tight_layout()
-        fig.savefig(output_dir / "mediapipe_associations.png", dpi=180)
-        plt.close(fig)
+    pass
 
 
 def main():
